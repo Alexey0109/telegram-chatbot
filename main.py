@@ -1,7 +1,7 @@
 import telebot
 
 
-bot = telebot.TeleBot("959976424:AAHQ7FxDWp9kCiRJjCwoj4EOnMQTwDshOsU")
+bot = telebot.TeleBot()
 @bot.message_handler(commands=['start'])
 def start_message(message):
     bot.send_message(message.chat.id, 'Привет! Я чат-бот. Пока я глупенький, но я еще учусь ^^')
