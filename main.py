@@ -8,15 +8,15 @@ bot = telebot.TeleBot(token)
 @bot.message_handler(commands=['start'])
 def start_message(message):
     print('Starting!')
-    bot.send_message(message.chat.id, 'Привет! Я чат-бот. Пока я глупенький, но я еще учусь ^^')
+    bot.send_message(message.chat.id, 'Hello! I am a chatbot and you can teach me some new words!')
 @bot.message_handler(commands=['stop'])
 def stop(message):
     print('Stopping!')
-    bot.send_message(message.chat.id,"Пока! Жду тебя снова ^^")
+    bot.send_message(message.chat.id,"Bye :D")
     exit(0)
 @bot.message_handler(commands=['help'])
 def help(message):
-    bot.send_message(message.chat.id,"Приветик! Я чат-бот которого обучает комьюнити!\nВот мои команды:\n/add_message - добавить сообщение в базу\n\nЕсли я отвечаю грубо или плохо - напишите @KeyboardDestroyer")
+    bot.send_message(message.chat.id,"Hello! I am a chatbot and you can teach me some new words!\nHere my commands::\n/add_message - add message pattern to DB\n\nIf I know rude words - text @KeyboardDestroyer")
     
 @bot.message_handler(commands=['add_message'])
 def add_message(message):
@@ -25,11 +25,11 @@ def add_message(message):
     bot.register_next_step_handler(message, register_message)
     
 def add_reply(message):
-    bot.send_message(message.chat.id, "Введи текст: ")
+    bot.send_message(message.chat.id, "Send message text: ")
     bot.register_next_step_handler(message, register_reply)
 def register_message(message):
     print(message.text)
-    bot.send_message(message.chat.id, "Теперь введи ответ: ")
+    bot.send_message(message.chat.id, "Send reply text: ")
     print("Writing message...")
     msgfile = open('messages.txt', 'a')
     msgfile.write(str(message.text) + '\n')
@@ -37,7 +37,7 @@ def register_message(message):
     bot.register_next_step_handler(message, register_reply)
 def register_reply(message):
     print(message.text)
-    bot.send_message(message.chat.id, "Регистрация нового паттерна... ")
+    bot.send_message(message.chat.id, "Writing... ")
     replyfile = open('replytext.txt', 'a')
     replyfile.write(str(message.text) + '\n')
     replyfile.close()
