@@ -21,7 +21,7 @@ def help(message):
 @bot.message_handler(commands=['add_message'])
 def add_message(message):
     print('Adding message')
-    bot.send_message(message.chat.id, "Введи текст: ")
+    bot.send_message(message.chat.id, "Send message text:  ")
     bot.register_next_step_handler(message, register_message)
     
 def add_reply(message):
