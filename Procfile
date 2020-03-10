@@ -1,1 +1,1 @@
-web: gunicorn main.py --log-file -
+bot: python main.py -p $PORT
