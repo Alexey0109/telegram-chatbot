@@ -6,6 +6,10 @@ MESSAGES = {}
 TEXT = None
 bot = telebot.TeleBot(TOKEN)
 
+def clean(text):
+    for i in [',', '.', ':', ';', '!', '?']: text = text.replace(i, '')
+    return text
+    
 @bot.message_handler(commands=['add'])
 def add_message(message):
     bot.send_message(message.chat.id, 'Enter message: ')
@@ -13,7 +17,7 @@ def add_message(message):
 def set_incoming(message):
     global TEXT
     text = message.text
-    TEXT = text
+    TEXT = clean(text.lower())
     bot.send_message(message.chat.id, 'Enter reply: ')
     bot.register_next_step_handler(message, set_reply)
 def set_reply(message):
@@ -25,7 +29,7 @@ def set_reply(message):
 def incoming_message(message):
     global MESSAGES
     try:
-        text = MESSAGES[message.text]
+        text = MESSAGES[clean(message.text.lower())]
         print(text)
         bot.send_message(message.chat.id, text)
     except Exception as e:
