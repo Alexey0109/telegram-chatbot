@@ -1,7 +1,7 @@
 import telebot
 
-#TOKEN = '959976424:AAHQ7FxDWp9kCiRJjCwoj4EOnMQTwDshOsU'
-TOKEN = '966351011:AAGDUmgrpOfujpT5flyRlOn26Li-_U8f7Dg'
+TOKEN = '959976424:AAHQ7FxDWp9kCiRJjCwoj4EOnMQTwDshOsU'
+#TOKEN = '966351011:AAGDUmgrpOfujpT5flyRlOn26Li-_U8f7Dg'
 MESSAGES = {}
 TEXT = None
 bot = telebot.TeleBot(TOKEN)
