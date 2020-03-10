@@ -18,6 +18,7 @@ def set_incoming(message):
     global TEXT
     text = message.text
     TEXT = clean(text.lower())
+    print(TEXT)
     bot.send_message(message.chat.id, 'Enter reply: ')
     bot.register_next_step_handler(message, set_reply)
 def set_reply(message):
